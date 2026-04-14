@@ -9,6 +9,6 @@
       Title="QueuePage">
 
     <Grid>
-        <TextBlock x:Name="TerminalTitleLabel" Text="Заголовок" />
+        <TextBlock x:Name="TerminalTitleLabel" Style="{StaticResource HeaderStyle}"/>
     </Grid>
 </Page>

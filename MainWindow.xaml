@@ -12,7 +12,7 @@
 
     <DockPanel LastChildFill="True">
 
-        <Border DockPanel.Dock="Top" Background="#1ABC9C" Padding="15">
+        <Border DockPanel.Dock="Top" Background="{StaticResource AccentColor}" Padding="15">
             <TextBlock Text="✈️ Візуалізатор черги аеропорту"
                        Foreground="White" FontSize="22" FontWeight="Bold"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -25,7 +25,7 @@
             </Grid>
         </Border>
 
-        <Border DockPanel.Dock="Left" Width="220" Background="#2C3E50">
+        <Border DockPanel.Dock="Left" Width="220" Background="{StaticResource PrimaryColor}">
             <StackPanel Margin="0,20,0,0">
                 <TextBlock Text="Навігація" Foreground="#7F8C8D" FontSize="12" FontWeight="Bold" Margin="15,0,0,10"/>
 
