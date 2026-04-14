@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirportQueueVisualizer
+namespace AirportQueueVisualizer.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для HomePage.xaml
+    /// Логика взаимодействия для InfoPage.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class InfoPage : Page
     {
-        public HomePage()
+        public InfoPage()
         {
             InitializeComponent();
         }

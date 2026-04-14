@@ -11,16 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirportQueueVisualizer
+namespace AirportQueueVisualizer.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для InfoPage.xaml
-    /// </summary>
-    public partial class InfoPage : Page
+    public partial class QueuePage : Page
     {
-        public InfoPage()
+        public QueuePage(string terminalName)
         {
             InitializeComponent();
+            TerminalTitleLabel.Text = $"Керування чергою: {terminalName}";
         }
     }
 }

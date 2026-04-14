@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
+using AirportQueueVisualizer.Pages;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -19,19 +20,19 @@ namespace AirportQueueVisualizer
             InitializeComponent();
             MainFrame.Navigate(new HomePage());
         }
-        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        private void GoToHome(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new HomePage());
+            MainFrame.NavigationService.Navigate(new HomePage());
         }
 
-        private void BtnQueue_Click(object sender, RoutedEventArgs e)
+        private void GoToQueue(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new QueuePage());
+            MainFrame.NavigationService.Navigate(new QueuePage("Термінал A"));
         }
 
-        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        private void GoToInfo(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new InfoPage());
+            MainFrame.NavigationService.Navigate(new InfoPage());
         }
     }
 }
