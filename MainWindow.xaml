@@ -5,115 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportQueueVisualizer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Система управління аеропортом" 
+        Height="500" Width="1000"
+        MinHeight="450" MinWidth="600"
+        WindowStartupLocation="CenterScreen">
 
-    <Window.Resources>
-        <!-- Зелена кнопка -->
-        <Style x:Key="GreenButton" TargetType="Button">
-            <Setter Property="Background" Value="#4CAF50"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#45A049"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#3D8B40"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <!-- Червона кнопка -->
-        <Style x:Key="RedButton" TargetType="Button">
-            <Setter Property="Background" Value="#F44336"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                       <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#E53935"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#C62828"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Візуалізатор черги в аеропорту"
-                   FontSize="20" FontWeight="Bold" Margin="10,10,10,10"/>
+        <Border Background="#2C3E50" Grid.Column="0">
+            <StackPanel Margin="0,20,0,0">
+                <TextBlock Text="✈️ АЕРОПОРТ"
+                           Foreground="White" FontSize="22" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,10,10,10">
-            <StackPanel>
-                <TextBlock Text="Ім'я"/>
-                <TextBox x:Name="NameBox" Width="150" Margin="0,5,10,5"/>
+                <Button x:Name="BtnHome" Content="Головна"
+                        Height="40" Margin="10,5" FontSize="16"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        Click="BtnHome_Click"/>
+
+                <Button x:Name="BtnQueue" Content="Черга"
+                        Height="40" Margin="10,5" FontSize="16"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        Click="BtnQueue_Click"/>
+
+                <Button x:Name="BtnInfo" Content="Інформація"
+                        Height="40" Margin="10,5" FontSize="16"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        Click="BtnInfo_Click"/>
             </StackPanel>
+        </Border>
 
-            <StackPanel>
-                <TextBlock Text="Рейс"/>
-                <TextBox x:Name="FlightBox" Width="150" Margin="0,5,10,5"/>
-            </StackPanel>
-
-            <Button Content="Додати"
-                    Style="{StaticResource GreenButton}"
-                    Width="100"
-                    Margin="5,20,5,5"
-                    Click="Add_Click" Height="30"/>
-        </StackPanel>
-
-        <ListBox x:Name="PassengerList" Grid.Row="2" Margin="10" Background="Transparent" BorderThickness="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="#E0E0E0" BorderThickness="1" Background="#FAFAFA" CornerRadius="8" Margin="0,5" Padding="5,10">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="0,0,10,0" Foreground="#333333"/>
-                            <TextBlock Text="{Binding Flight, StringFormat='(рейс {0})'}" Foreground="#888888" FontSize="14" VerticalAlignment="Bottom"/>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
-
-        <Button Content="Видалити"
-                Style="{StaticResource RedButton}"
-                Grid.Row="3"
-                Width="120"
-                Margin="10"
-                HorizontalAlignment="Left"
-                Click="Delete_Click"/>
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
