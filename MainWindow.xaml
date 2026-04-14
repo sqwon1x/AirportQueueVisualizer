@@ -6,6 +6,26 @@
         xmlns:local="clr-namespace:AirportQueueVisualizer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Візуалізатор черги в аеропорту"
+                   FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="NameBox" Width="150" Margin="5" />
+            <TextBox x:Name="FlightBox" Width="150" Margin="5" />
+            <Button Content="Додати" Width="100" Margin="5" Click="Add_Click"/>
+        </StackPanel>
+
+        <ListBox x:Name="PassengerList" Grid.Row="2" Margin="5"/>
+
+        <Button Content="Видалити" Grid.Row="3" Width="100" Margin="5" Click="Delete_Click"/>
     </Grid>
 </Window>
