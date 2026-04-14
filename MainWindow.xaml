@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportQueueVisualizer"
         mc:Ignorable="d"
         Title="Система управління аеропортом" 
-        Height="500" Width="1000"
+        Height="800" Width="1400"
         MinHeight="450" MinWidth="600"
         WindowStartupLocation="CenterScreen">
 

@@ -8,7 +8,46 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QueuePage">
 
-    <Grid>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <TextBlock x:Name="TerminalTitleLabel" Style="{StaticResource HeaderStyle}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+            <StackPanel Margin="0,0,15,0">
+                <TextBlock Text="Ім'я пасажира:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
+                <TextBox x:Name="NameBox" Width="180" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,15,0">
+                <TextBlock Text="Номер рейсу:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
+                <TextBox x:Name="FlightBox" Width="120" Height="28"/>
+            </StackPanel>
+
+            <Button x:Name="BtnAddOrUpdate" Content="Додати" Style="{StaticResource GreenButton}" Width="100" Height="30" VerticalAlignment="Bottom" Click="AddOrUpdate_Click"/>
+
+            <Button x:Name="BtnCancelEdit" Content="Скасувати" Width="90" Height="30" VerticalAlignment="Bottom" Margin="10,0,0,0" Click="CancelEdit_Click" Visibility="Collapsed"/>
+        </StackPanel>
+
+        <ListBox x:Name="PassengerList" Grid.Row="2" Margin="0,0,0,15" Background="{StaticResource BgColor}" BorderBrush="#BDC3C7">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="0,0,10,0" Foreground="{StaticResource TextColor}"/>
+                        <TextBlock Text="{Binding Flight, StringFormat='(Рейс: {0})'}" Foreground="#7F8C8D" FontSize="14" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Редагувати" Style="{StaticResource BlueButton}" Width="120" Height="30" Margin="0,0,10,0" Click="Edit_Click"/>
+            <Button Content="Видалити" Style="{StaticResource RedButton}" Width="120" Height="30" Click="Delete_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
