@@ -12,13 +12,16 @@ using System.Collections.ObjectModel;
 
 namespace AirportQueueVisualizer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    public class Passenger
+    {
+        public string Name { get; set; }
+        public string Flight { get; set; }
+    }
+
     public partial class MainWindow : Window
     {
-        ObservableCollection<string> passengers = new ObservableCollection<string>();
-        
+        ObservableCollection<Passenger> passengers = new ObservableCollection<Passenger>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,21 +32,31 @@ namespace AirportQueueVisualizer
         {
             if (string.IsNullOrWhiteSpace(NameBox.Text) || string.IsNullOrWhiteSpace(FlightBox.Text))
             {
-                MessageBox.Show("Введіть дані!");
+                MessageBox.Show("Будь ласка, введіть ім'я та номер рейсу!");
                 return;
             }
 
-            passengers.Add($"{NameBox.Text} - рейс {FlightBox.Text}");
+            passengers.Add(new Passenger
+            {
+                Name = NameBox.Text.Trim(),
+                Flight = FlightBox.Text.Trim(),
+            });
 
             NameBox.Clear();
             FlightBox.Clear();
+
+            NameBox.Focus();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (PassengerList.SelectedItem != null)
+            if (PassengerList.SelectedItem is Passenger selectedPassenger)
             {
-                passengers.Remove(PassengerList.SelectedItem.ToString());
+                passengers.Remove(selectedPassenger);
+            }
+            else
+            {
+                MessageBox.Show("Будь ласка, виберіть пасажира зі списку для видалення.");
             }
         }
     }
