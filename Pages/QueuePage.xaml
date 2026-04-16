@@ -16,25 +16,26 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="TerminalTitleLabel" Style="{StaticResource HeaderStyle}"/>
+        <TextBlock Text="{Binding TerminalTitle}" Style="{StaticResource HeaderStyle}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,15,0">
                 <TextBlock Text="Ім'я пасажира:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
-                <TextBox x:Name="NameBox" Width="180" Height="28"/>
+                <TextBox Width="180" Height="28"
+                         Text="{Binding CurrentPassenger.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,15,0">
                 <TextBlock Text="Номер рейсу:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
-                <TextBox x:Name="FlightBox" Width="120" Height="28"/>
+                <TextBox Width="120" Height="28"
+                         Text="{Binding CurrentPassenger.Flight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <Button x:Name="BtnAddOrUpdate" Content="Додати" Style="{StaticResource GreenButton}" Width="100" Height="30" VerticalAlignment="Bottom" Click="AddOrUpdate_Click"/>
-
             <Button x:Name="BtnCancelEdit" Content="Скасувати" Width="90" Height="30" VerticalAlignment="Bottom" Margin="10,0,0,0" Click="CancelEdit_Click" Visibility="Collapsed"/>
         </StackPanel>
 
-        <ListBox x:Name="PassengerList" Grid.Row="2" Margin="0,0,0,15" Background="{StaticResource BgColor}" BorderBrush="#BDC3C7">
+        <ListBox x:Name="PassengerList" ItemsSource="{Binding Passengers}" Grid.Row="2" Margin="0,0,0,15" Background="{StaticResource BgColor}" BorderBrush="#BDC3C7">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5">

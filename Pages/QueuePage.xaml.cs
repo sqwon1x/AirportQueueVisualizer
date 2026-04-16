@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AirportQueueVisualizer.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,76 +13,89 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using AirportQueueVisualizer.Models;
+using System.Runtime.CompilerServices;
 
 namespace AirportQueueVisualizer.Pages
 {
-    public partial class QueuePage : Page
+    public partial class QueuePage : Page, INotifyPropertyChanged
     {
-        ObservableCollection<Passenger> passengers = new ObservableCollection<Passenger>();
+        public ObservableCollection<Passenger> Passengers { get; set; } = new ObservableCollection<Passenger>();
 
-        Passenger editingPassenger = null;
+        private Passenger _currentPassenger;
+        public Passenger CurrentPassenger
+        {
+            get => _currentPassenger;
+            set { _currentPassenger = value; OnPropertyChanged(); }
+        }
+
+        public string TerminalTitle { get; set; }
+
+        private Passenger _editingPassenger = null;
 
         public QueuePage(string terminalName)
         {
             InitializeComponent();
-            TerminalTitleLabel.Text = $"Керування чергою: {terminalName}";
-            PassengerList.ItemsSource = passengers;
+
+            Passengers = AirportData.AllPassengers;
+
+            CurrentPassenger = new Passenger { Name = "", Flight = "" };
+            TerminalTitle = $"Керування чергою: {terminalName}";
+
+            this.DataContext = this;
         }
 
         private void AddOrUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NameBox.Text) || string.IsNullOrWhiteSpace(FlightBox.Text))
+            if (string.IsNullOrWhiteSpace(CurrentPassenger.Name) || string.IsNullOrWhiteSpace(CurrentPassenger.Flight))
             {
                 MessageBox.Show("Будь ласка, введіть ім'я та рейс!");
                 return;
             }
 
-            if (editingPassenger == null)
+            if (_editingPassenger == null)
             {
-                passengers.Add(new Passenger { Name = NameBox.Text.Trim(), Flight = FlightBox.Text.Trim() });
+                Passengers.Add(new Passenger
+                {
+                    Name = CurrentPassenger.Name.Trim(),
+                    Flight = CurrentPassenger.Flight.Trim(),
+                });
             }
             else
             {
-                editingPassenger.Name = NameBox.Text.Trim();
-                editingPassenger.Flight = FlightBox.Text.Trim();
+                _editingPassenger.Name = CurrentPassenger.Name.Trim();
+                _editingPassenger.Flight = CurrentPassenger.Flight.Trim();
 
-                editingPassenger = null;
+                _editingPassenger = null;
                 BtnAddOrUpdate.Content = "Додати";
                 BtnCancelEdit.Visibility = Visibility.Collapsed;
                 PassengerList.IsEnabled = true;
             }
 
-            NameBox.Clear();
-            FlightBox.Clear();
-            NameBox.Focus();
+            CurrentPassenger.Name = "";
+            CurrentPassenger.Flight = "";
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             if (PassengerList.SelectedItem is Passenger selected)
             {
-                editingPassenger = selected;
+                _editingPassenger = selected;
 
-                NameBox.Text = selected.Name;
-                FlightBox.Text = selected.Flight;
+                CurrentPassenger.Name = selected.Name;
+                CurrentPassenger.Flight = selected.Flight;
 
                 BtnAddOrUpdate.Content = "Зберегти";
                 BtnCancelEdit.Visibility = Visibility.Visible;
                 PassengerList.IsEnabled = false;
             }
-            else
-            {
-                MessageBox.Show("Оберіть пасажира для редагування.");
-            }
         }
 
         private void CancelEdit_Click(object sender, RoutedEventArgs e)
         {
-            editingPassenger = null;
-            NameBox.Clear();
-            FlightBox.Clear();
+            _editingPassenger = null;
+
+            CurrentPassenger.Name = "";
+            CurrentPassenger.Flight = "";
 
             BtnAddOrUpdate.Content = "Додати";
             BtnCancelEdit.Visibility = Visibility.Collapsed;
@@ -90,12 +106,14 @@ namespace AirportQueueVisualizer.Pages
         {
             if (PassengerList.SelectedItem is Passenger selected)
             {
-                passengers.Remove(selected);
+                Passengers.Remove(selected);
             }
-            else
-            {
-                MessageBox.Show("Оберіть пасажира для видалення.");
-            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
