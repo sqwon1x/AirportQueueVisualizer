@@ -8,30 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InfoPage">
 
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
     <Grid Margin="30">
         <StackPanel MaxWidth="700" HorizontalAlignment="Left">
 
-            <TextBlock Text="Довідкова інформація" Style="{StaticResource HeaderStyle}" FontSize="28"/>
+            <TextBlock Text="{DynamicResource InfoTitle}" Style="{DynamicResource HeaderStyle}" FontSize="28"/>
 
-            <TextBlock Text="📖 Як користуватися програмою:" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}" Margin="0,20,0,10"/>
+            <TextBlock Text="{DynamicResource InfoUsage}" FontWeight="Bold" FontSize="18" Foreground="{DynamicResource PrimaryColor}" Margin="0,20,0,10"/>
 
             <StackPanel Margin="15,0,0,20">
-                <TextBlock Text="1. Реєстрація: Введіть ім'я пасажира та номер рейсу у відповідні поля." FontSize="15" Margin="0,0,0,5"/>
-                <TextBlock Text="2. Додавання: Натисніть зелену кнопку «Додати», щоб внести пасажира до списку." FontSize="15" Margin="0,0,0,5"/>
-                <TextBlock Text="3. Видалення: Оберіть пасажира у списку кліком миші та натисніть червону кнопку «Видалити»." FontSize="15" Margin="0,0,0,5"/>
-                <TextBlock Text="4. Валідація: Програма не дозволить додати пасажира, якщо поля введення порожні." FontSize="15" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource InfoStep1}" FontSize="15" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource InfoStep2}" FontSize="15" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource InfoStep3}" FontSize="15" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource InfoStep4}" FontSize="15" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
             </StackPanel>
 
             <Separator Margin="0,10,0,20" Background="#BDC3C7"/>
 
-            <TextBlock Text="👨‍💻 Про розробника:" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}" Margin="0,0,0,10"/>
+            <TextBlock Text="{DynamicResource InfoDeveloper}" FontWeight="Bold" FontSize="18" Foreground="{DynamicResource PrimaryColor}" Margin="0,0,0,10"/>
 
-            <Border Background="{StaticResource BgColor}" Padding="15" CornerRadius="8">
+            <Border Background="{DynamicResource BgColor}" Padding="15" CornerRadius="8">
                 <StackPanel>
-                    <TextBlock Text="Проєкт створено в рамках проходження навчальної практики." FontSize="15" Margin="0,0,0,8"/>
-                    <TextBlock Text="Розробник: студент групи КН-23 Гутич Михайло" FontSize="15" FontWeight="Medium" Margin="0,0,0,5"/>
-                    <TextBlock Text="Природничо-гуманітарний фаховий коледж ДВНЗ «УжНУ»" FontSize="14" Foreground="Gray"/>
-                    <TextBlock Text="Версія: 1.0 (2026 рік)" FontSize="14" Foreground="Gray" Margin="0,10,0,0"/>
+                    <TextBlock Text="{DynamicResource InfoProject}" FontSize="15" Foreground="{DynamicResource TextColor}" Margin="0,0,0,8"/>
+                    <TextBlock Text="{DynamicResource InfoAuthor}" FontSize="15" Foreground="{DynamicResource TextColor}" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <TextBlock Text="{DynamicResource InfoCollege}" FontSize="14" Foreground="Gray"/>
+                    <TextBlock Text="{DynamicResource InfoVersion}" FontSize="14" Foreground="Gray" Margin="0,10,0,0"/>
                 </StackPanel>
             </Border>
             

@@ -12,41 +12,46 @@
 
     <DockPanel LastChildFill="True">
 
-        <Border DockPanel.Dock="Top" Background="{StaticResource AccentColor}" Padding="15">
-            <TextBlock Text="✈️ Візуалізатор черги аеропорту"
+        <Border DockPanel.Dock="Top" Background="{DynamicResource AccentColor}" Padding="15">
+            <TextBlock Text="{DynamicResource MainTitle}"
                        Foreground="White" FontSize="22" FontWeight="Bold"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Border>
 
-        <Border DockPanel.Dock="Bottom" Background="#BDC3C7" Padding="5,2">
+        <Border DockPanel.Dock="Left" Width="220" Background="{DynamicResource PrimaryColor}">
             <Grid>
-                <TextBlock Text="Статус: Система готова до роботи" FontSize="12" Foreground="#333" HorizontalAlignment="Left"/>
-                <TextBlock Text="Версія 1.0" FontSize="12" Foreground="#333" HorizontalAlignment="Right"/>
+                <StackPanel Margin="0,20,0,0" VerticalAlignment="Top">
+                    <TextBlock Text="{DynamicResource MenuNav}" Foreground="#7F8C8D" FontSize="12" FontWeight="Bold" Margin="15,0,0,10"/>
+
+                    <Button Content="{DynamicResource MenuHome}" Click="GoToHome"
+                        Margin="10,5" Padding="10,8"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        HorizontalContentAlignment="Left" FontSize="14"/>
+
+                    <Button Content="{DynamicResource MenuQueue}" Click="GoToQueue"
+                        Margin="10,5" Padding="10,8"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        HorizontalContentAlignment="Left" FontSize="14"/>
+
+                    <Button Content="{DynamicResource MenuInfo}" Click="GoToInfo"
+                        Margin="10,5" Padding="10,8"
+                        Background="#34495E" Foreground="White" BorderThickness="0"
+                        HorizontalContentAlignment="Left" FontSize="14"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Bottom" Margin="10,20">
+                    <Button Content="{DynamicResource Theme}" Click="ToggleTheme_Click"
+                            Margin="0,0,0,10" Padding="10,8"
+                            Background="{DynamicResource AccentColor}" Foreground="White" BorderThickness="0"/>
+
+                    <Button Content="Ua / En" Click="ChangeLanguage_Click"
+                        Padding="10,8"
+                        Background="{DynamicResource AccentColor}" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
             </Grid>
         </Border>
 
-        <Border DockPanel.Dock="Left" Width="220" Background="{StaticResource PrimaryColor}">
-            <StackPanel Margin="0,20,0,0">
-                <TextBlock Text="Навігація" Foreground="#7F8C8D" FontSize="12" FontWeight="Bold" Margin="15,0,0,10"/>
-
-                <Button Content="🏠 Головна сторінка" Click="GoToHome"
-                        Margin="10,5" Padding="10,8"
-                        Background="#34495E" Foreground="White" BorderThickness="0"
-                        HorizontalContentAlignment="Left" FontSize="14"/>
-
-                <Button Content="👥 Управління чергою" Click="GoToQueue"
-                        Margin="10,5" Padding="10,8"
-                        Background="#34495E" Foreground="White" BorderThickness="0"
-                        HorizontalContentAlignment="Left" FontSize="14"/>
-
-                <Button Content="ℹ️ Інформація" Click="GoToInfo"
-                        Margin="10,5" Padding="10,8"
-                        Background="#34495E" Foreground="White" BorderThickness="0"
-                        HorizontalContentAlignment="Left" FontSize="14"/>
-            </StackPanel>
-        </Border>
-
-        <Border Background="#F4F6F6" Padding="15">
+        <Border Background="{DynamicResource BgColor}" Padding="15">
             <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         </Border>
 

@@ -28,18 +28,14 @@ namespace AirportQueueVisualizer.Pages
             set { _currentPassenger = value; OnPropertyChanged(); }
         }
 
-        public string TerminalTitle { get; set; }
-
         private Passenger _editingPassenger = null;
 
-        public QueuePage(string terminalName)
+        public QueuePage()
         {
             InitializeComponent();
 
             Passengers = AirportData.AllPassengers;
-
             CurrentPassenger = new Passenger { Name = "", Flight = "" };
-            TerminalTitle = $"Керування чергою: {terminalName}";
 
             this.DataContext = this;
         }
@@ -48,7 +44,7 @@ namespace AirportQueueVisualizer.Pages
         {
             if (string.IsNullOrWhiteSpace(CurrentPassenger.Name) || string.IsNullOrWhiteSpace(CurrentPassenger.Flight))
             {
-                MessageBox.Show("Будь ласка, введіть ім'я та рейс!");
+                MessageBox.Show((string)Application.Current.Resources["MsgErrorEmpty"]);
                 return;
             }
 
@@ -66,13 +62,15 @@ namespace AirportQueueVisualizer.Pages
                 _editingPassenger.Flight = CurrentPassenger.Flight.Trim();
 
                 _editingPassenger = null;
-                BtnAddOrUpdate.Content = "Додати";
+                BtnAddOrUpdate.Content = Application.Current.Resources["BtnAdd"];
                 BtnCancelEdit.Visibility = Visibility.Collapsed;
                 PassengerList.IsEnabled = true;
             }
 
             CurrentPassenger.Name = "";
             CurrentPassenger.Flight = "";
+
+            AirportData.SaveData();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
@@ -84,7 +82,7 @@ namespace AirportQueueVisualizer.Pages
                 CurrentPassenger.Name = selected.Name;
                 CurrentPassenger.Flight = selected.Flight;
 
-                BtnAddOrUpdate.Content = "Зберегти";
+                BtnAddOrUpdate.Content = Application.Current.Resources["BtnSave"];
                 BtnCancelEdit.Visibility = Visibility.Visible;
                 PassengerList.IsEnabled = false;
             }
@@ -97,7 +95,7 @@ namespace AirportQueueVisualizer.Pages
             CurrentPassenger.Name = "";
             CurrentPassenger.Flight = "";
 
-            BtnAddOrUpdate.Content = "Додати";
+            BtnAddOrUpdate.Content = Application.Current.Resources["BtnAdd"];
             BtnCancelEdit.Visibility = Visibility.Collapsed;
             PassengerList.IsEnabled = true;
         }
@@ -107,6 +105,7 @@ namespace AirportQueueVisualizer.Pages
             if (PassengerList.SelectedItem is Passenger selected)
             {
                 Passengers.Remove(selected);
+                AirportData.SaveData();
             }
         }
 

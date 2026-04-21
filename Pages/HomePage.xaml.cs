@@ -10,17 +10,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AirportQueueVisualizer.Models;
 
 namespace AirportQueueVisualizer.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для HomePage.xaml
-    /// </summary>
     public partial class HomePage : Page
     {
         public HomePage()
         {
             InitializeComponent();
+
+            this.Loaded += HomePage_Loaded;
+        }
+
+        private void HomePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            TotalPassengerLabel.Text = AirportData.AllPassengers.Count.ToString();
         }
     }
 }

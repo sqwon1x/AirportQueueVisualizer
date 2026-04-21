@@ -8,28 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
     <Grid Margin="30">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="600">
-            <TextBlock Text="🛫" FontSize="80" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-
-            <TextBlock Text="Ласкаво просимо!"
-                       Style="{StaticResource HeaderStyle}"
+            <TextBlock Text="{DynamicResource HomeWelcome}"
+                       Style="{DynamicResource HeaderStyle}"
                        FontSize="32"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,10"/>
 
-            <TextBlock Text="Система «Візуалізатор черги аеропорту» розроблена для ефективного керування пасажиропотоком. Вона дозволяє швидко реєструвати пасажирів на рейси, формувати списки черг та редагувати їх у реальному часі."
+            <TextBlock Text="{DynamicResource HomeDesc}"
                        FontSize="16"
-                       Foreground="{StaticResource TextColor}"
+                       Foreground="{DynamicResource TextColor}"
                        TextWrapping="Wrap"
                        TextAlignment="Center"
                        LineHeight="24"
                        Margin="0,0,0,30"/>
 
-            <Border Background="{StaticResource BgColor}" BorderBrush="#BDC3C7" BorderThickness="1" CornerRadius="8" Padding="15">
+            <Border Background="{DynamicResource PanelColor}" BorderBrush="{DynamicResource AccentColor}" BorderThickness="2" CornerRadius="8" Padding="20" Margin="0,0,0,30">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Всього пасажирів у системі: " FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextColor}"/>
+
+                    <TextBlock x:Name="TotalPassengerLabel" Text="0" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource AccentColor}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="{DynamicResource BgColor}" BorderBrush="#BDC3C7" BorderThickness="1" CornerRadius="8" Padding="15">
                 <StackPanel>
-                    <TextBlock Text="Швидкий старт:" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-                    <TextBlock Text="Перейдіть до розділу «Управління чергою» у боковому меню, щоб розпочати роботу з даними пасажирів." FontSize="14" Foreground="#555" TextWrapping="Wrap"/>
+                    <TextBlock Text="{DynamicResource HomeQuickStart}" FontWeight="Bold" FontSize="16" Foreground="{DynamicResource TextColor}" Margin="0,0,0,10"/>
+                    <TextBlock Text="{DynamicResource HomeStartDesc}" FontSize="14" Foreground="{DynamicResource TextColor}" TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
         </StackPanel>

@@ -8,6 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QueuePage">
 
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+    
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,30 +27,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding TerminalTitle}" Style="{StaticResource HeaderStyle}"/>
+        <TextBlock Text="{DynamicResource QueueMainTitle}" Style="{DynamicResource HeaderStyle}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,15,0">
-                <TextBlock Text="Ім'я пасажира:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource QueuePassengerName}" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
                 <TextBox Width="180" Height="28"
                          Text="{Binding CurrentPassenger.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,15,0">
-                <TextBlock Text="Номер рейсу:" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource QueueFlightNumber}" Foreground="{DynamicResource TextColor}" Margin="0,0,0,5"/>
                 <TextBox Width="120" Height="28"
                          Text="{Binding CurrentPassenger.Flight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
-            <Button x:Name="BtnAddOrUpdate" Content="Додати" Style="{StaticResource GreenButton}" Width="100" Height="30" VerticalAlignment="Bottom" Click="AddOrUpdate_Click"/>
-            <Button x:Name="BtnCancelEdit" Content="Скасувати" Width="90" Height="30" VerticalAlignment="Bottom" Margin="10,0,0,0" Click="CancelEdit_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnAddOrUpdate" Content="{DynamicResource BtnAdd}" Style="{DynamicResource GreenButton}" Width="100" Height="30" VerticalAlignment="Bottom" Click="AddOrUpdate_Click"/>
+            <Button x:Name="BtnCancelEdit" Content="{DynamicResource BtnCancel}" Width="90" Height="30" VerticalAlignment="Bottom" Margin="10,0,0,0" Click="CancelEdit_Click" Visibility="Collapsed"/>
         </StackPanel>
 
-        <ListBox x:Name="PassengerList" ItemsSource="{Binding Passengers}" Grid.Row="2" Margin="0,0,0,15" Background="{StaticResource BgColor}" BorderBrush="#BDC3C7">
+        <ListBox x:Name="PassengerList" ItemsSource="{Binding Passengers}" Grid.Row="2" Margin="0,0,0,15" Background="{DynamicResource BgColor}" BorderBrush="#BDC3C7">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="0,0,10,0" Foreground="{StaticResource TextColor}"/>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}"/>
                         <TextBlock Text="{Binding Flight, StringFormat='(Рейс: {0})'}" Foreground="#7F8C8D" FontSize="14" VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
@@ -47,8 +58,8 @@
         </ListBox>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Button Content="Редагувати" Style="{StaticResource BlueButton}" Width="120" Height="30" Margin="0,0,10,0" Click="Edit_Click"/>
-            <Button Content="Видалити" Style="{StaticResource RedButton}" Width="120" Height="30" Click="Delete_Click"/>
+            <Button Content="{DynamicResource BtnEdit}" Style="{DynamicResource BlueButton}" Width="120" Height="30" Margin="0,0,10,0" Click="Edit_Click"/>
+            <Button Content="{DynamicResource BtnDelete}" Style="{DynamicResource RedButton}" Width="120" Height="30" Click="Delete_Click"/>
         </StackPanel>
     </Grid>
 </Page>

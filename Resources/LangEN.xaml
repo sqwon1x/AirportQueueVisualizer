@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="MenuHome">Home Page</system:String>
+    <system:String x:Key="MenuQueue">Queue Management</system:String>
+    <system:String x:Key="MenuInfo">Information</system:String>
+    <system:String x:Key="MenuNav">Navigation</system:String>
+    <system:String x:Key="Theme">Theme</system:String>
+
+    <system:String x:Key="BtnAdd">Add</system:String>
+    <system:String x:Key="BtnEdit">Edit</system:String>
+    <system:String x:Key="BtnDelete">Delete</system:String>
+    <system:String x:Key="BtnSave">Save</system:String>
+    <system:String x:Key="BtnCancel">Cancel</system:String>
+
+    <system:String x:Key="MainTitle">Airport Queue Visualizer</system:String>
+    <system:String x:Key="HomeWelcome">Welcome!</system:String>
+    <system:String x:Key="HomeDesc">The "Airport Queue Visualizer" system is designed for efficient passenger flow management. It allows you to quickly register passengers for flights, create queue lists, and edit them in real-time.</system:String>
+    <system:String x:Key="HomeQuickStart">Quick Start:</system:String>
+    <system:String x:Key="HomeStartDesc">Go to the "Queue Management" section in the sidebar menu to start working with passenger data.</system:String>
+    <system:String x:Key="QueueMainTitle">Queue Management: Terminal A</system:String>
+    <system:String x:Key="InfoTitle">Help Information</system:String>
+    <system:String x:Key="InfoUsage">How to use the program:</system:String>
+    <system:String x:Key="InfoStep1">1. Registration: Enter the passenger's name and flight number in the appropriate fields.</system:String>
+    <system:String x:Key="InfoStep2">2. Adding: Click the green "Add" button to add the passenger to the list.</system:String>
+    <system:String x:Key="InfoStep3">3. Deletion: Select a passenger in the list by clicking on them and click the red "Delete" button.</system:String>
+    <system:String x:Key="InfoStep4">4. Editing: Select a passenger in the list by clicking on them and click the blue "Edit" button.</system:String>
+    <system:String x:Key="InfoDeveloper">About the Developer:</system:String>
+    <system:String x:Key="InfoProject">The project was created as part of an educational internship.</system:String>
+    <system:String x:Key="InfoAuthor">Developer: Student of group KN-23, Mykhailo Hutych</system:String>
+    <system:String x:Key="InfoCollege">Natural-Humanitarian College of Uzhhorod National University</system:String>
+    <system:String x:Key="InfoVersion">Version: 1.1</system:String>
+
+    <system:String x:Key="QueuePassengerName">Passenger Name:</system:String>
+    <system:String x:Key="QueueFlightNumber">Flight Number:</system:String>
+
+    <system:String x:Key="MsgErrorEmpty">Please enter the name and flight!</system:String>
+
+</ResourceDictionary>

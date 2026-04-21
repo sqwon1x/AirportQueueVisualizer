@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="MenuHome">Головна сторінка</system:String>
+    <system:String x:Key="MenuQueue">Управління чергою</system:String>
+    <system:String x:Key="MenuInfo">Інформація</system:String>
+    <system:String x:Key="MenuNav">Навігація</system:String>
+    <system:String x:Key="Theme">Тема</system:String>
+
+    <system:String x:Key="BtnAdd">Додати</system:String>
+    <system:String x:Key="BtnEdit">Редагувати</system:String>
+    <system:String x:Key="BtnDelete">Видалити</system:String>
+    <system:String x:Key="BtnSave">Зберегти</system:String>
+    <system:String x:Key="BtnCancel">Скасувати</system:String>
+
+    <system:String x:Key="MainTitle">Візуалізатор черги аеропорту</system:String>
+    <system:String x:Key="HomeWelcome">Ласкаво просимо!</system:String>
+    <system:String x:Key="HomeDesc">Система «Візуалізатор черги аеропорту» розроблена для ефективного керування пасажиропотоком. Вона дозволяє швидко реєструвати пасажирів на рейси, формувати списки черг та редагувати їх у реальному часі.</system:String>
+    <system:String x:Key="HomeQuickStart">Швидкий старт:</system:String>
+    <system:String x:Key="HomeStartDesc">Перейдіть до розділу «Управління чергою» у боковому меню, щоб розпочати роботу з даними пасажирів.</system:String>
+    <system:String x:Key="QueueMainTitle">Керування чергою: Термінал А</system:String>
+    <system:String x:Key="InfoTitle">Довідкова інформація</system:String>
+    <system:String x:Key="InfoUsage">Як користуватися програмою:</system:String>
+    <system:String x:Key="InfoStep1">1. Реєстрація: Введіть ім'я пасажира та номер рейсу у відповідні поля.</system:String>
+    <system:String x:Key="InfoStep2">2. Додавання: Натисніть зелену кнопку «Додати», щоб внести пасажира до списку.</system:String>
+    <system:String x:Key="InfoStep3">3. Видалення: Оберіть пасажира у списку кліком миші та натисніть червону кнопку «Видалити».</system:String>
+    <system:String x:Key="InfoStep4">4. Редагування: Оберіть пасажира у списку кліком миші та натисніть синю кнопку «Редагувати».</system:String>
+    <system:String x:Key="InfoDeveloper">Про розробника:</system:String>
+    <system:String x:Key="InfoProject">Проєкт створено в рамках проходження навчальної практики.</system:String>
+    <system:String x:Key="InfoAuthor">Розробник: студент групи КН-23 Гутич Михайло</system:String>
+    <system:String x:Key="InfoCollege">Природничо-гуманітарний фаховий коледж ДВНЗ «УжНУ»</system:String>
+    <system:String x:Key="InfoVersion">Версія: 1.1</system:String>
+
+    <system:String x:Key="QueuePassengerName">Ім'я пасажира:</system:String>
+    <system:String x:Key="QueueFlightNumber">Номер рейсу:</system:String>
+
+    <system:String x:Key="MsgErrorEmpty">Будь ласка, введіть ім'я та рейс!</system:String>
+
+</ResourceDictionary>
