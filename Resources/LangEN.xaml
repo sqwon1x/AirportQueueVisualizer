@@ -19,6 +19,7 @@
     <system:String x:Key="HomeDesc">The "Airport Queue Visualizer" system is designed for efficient passenger flow management. It allows you to quickly register passengers for flights, create queue lists, and edit them in real-time.</system:String>
     <system:String x:Key="HomeQuickStart">Quick Start:</system:String>
     <system:String x:Key="HomeStartDesc">Go to the "Queue Management" section in the sidebar menu to start working with passenger data.</system:String>
+    <system:String x:Key="HomeStats">Total number of passengers in the system:</system:String>
     <system:String x:Key="QueueMainTitle">Queue Management: Terminal A</system:String>
     <system:String x:Key="InfoTitle">Help Information</system:String>
     <system:String x:Key="InfoUsage">How to use the program:</system:String>

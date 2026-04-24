@@ -37,7 +37,7 @@
 
             <Border Background="{DynamicResource PanelColor}" BorderBrush="{DynamicResource AccentColor}" BorderThickness="2" CornerRadius="8" Padding="20" Margin="0,0,0,30">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="Всього пасажирів у системі: " FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextColor}"/>
+                    <TextBlock Text="{DynamicResource HomeStats}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextColor}"/>
 
                     <TextBlock x:Name="TotalPassengerLabel" Text="0" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource AccentColor}"/>
                 </StackPanel>

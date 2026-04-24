@@ -19,6 +19,7 @@
     <system:String x:Key="HomeDesc">Система «Візуалізатор черги аеропорту» розроблена для ефективного керування пасажиропотоком. Вона дозволяє швидко реєструвати пасажирів на рейси, формувати списки черг та редагувати їх у реальному часі.</system:String>
     <system:String x:Key="HomeQuickStart">Швидкий старт:</system:String>
     <system:String x:Key="HomeStartDesc">Перейдіть до розділу «Управління чергою» у боковому меню, щоб розпочати роботу з даними пасажирів.</system:String>
+    <system:String x:Key="HomeStats">Всього пасажирів у системі:</system:String>
     <system:String x:Key="QueueMainTitle">Керування чергою: Термінал А</system:String>
     <system:String x:Key="InfoTitle">Довідкова інформація</system:String>
     <system:String x:Key="InfoUsage">Як користуватися програмою:</system:String>
